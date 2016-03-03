@@ -1,0 +1,42 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/red_material</item>
+        <item name="colorPrimaryDark">@color/dark_red_material</item>
+        <item name="colorAccent">@color/orange_material</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="FullscreenTheme" parent="AppTheme">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/dark_grey_material</item>
+    </style>
+
+
+    <style name="CustomFloaterTextAppearance" parent="android:TextAppearance.Small">
+        <item name="android:textSize">9sp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:shadowColor">#FFFF0000</item>
+        <item name="android:shadowRadius">4</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">3</item>
+    </style>
+
+
+</resources>
