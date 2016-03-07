@@ -11,11 +11,17 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
+import com.estimote.sdk.BeaconManager;
+import com.estimote.sdk.Region;
 import com.estimote.sdk.SystemRequirementsChecker;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 //This application shows the information associated with the beacon closer
 
@@ -29,8 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private MenuAdapter cAdapter;
     private List<Item> productsList ;
 
-    private boolean doubleBackToExitPressedOnce = false;
-
+    private Button stopSearchingButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.spash);
 
         mToolbar = (Toolbar) findViewById(R.id.restaurant_menu_toolbar);
+
+        stopSearchingButton = (Button) findViewById(R.id.button_stop_searching);
+        stopSearchingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BeaconManager b = new BeaconManager(getApplicationContext());
+                b.stopRanging(new Region("monitored region",
+                        UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"), 17957, 56571));
+                Toast.makeText(MainActivity.this, "Research was stopped", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -54,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
 
             // set title
-            alertDialogBuilder.setTitle("Restaurant IL VIALETTO");
+            alertDialogBuilder.setTitle("Restaurant AL VIALETTO");
 
             // set dialog message
             alertDialogBuilder
@@ -86,10 +102,6 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "onPause");
         super.onPause();
     }
-
-
-    //private booa
-
 
     @Override
     public void onBackPressed(){

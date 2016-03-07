@@ -26,7 +26,7 @@ public class MyApplication extends Application {
         beaconManager.setMonitoringListener(new BeaconManager.MonitoringListener() {
             @Override
             public void onEnteredRegion(Region region, List<Beacon> list) {
-                showNotification("Restaurant IL VIALETTO", "Click for the dishes of the day");
+                showNotification("Restaurant AL VIALETTO", "Click for the dishes of the day");
             }
             @Override
             public void onExitedRegion(Region region) {
