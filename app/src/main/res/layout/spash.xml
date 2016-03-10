@@ -3,26 +3,22 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8"
-        android:background="@drawable/splash" />
-
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Research started in background. You can continue to do other things, or you can simply lock the screen."
-        android:textColor="@color/white"
-        android:background="@color/red_material"
-        android:textSize="25sp"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:text="Searching..."
+        android:textColor="@color/red_material"
+        android:textSize="50sp"
         android:gravity="center" />
+
+    <!-- Research started in background. You can continue to do other things, or you can simply lock the screen. -->
 
     <Button
         android:id="@+id/button_stop_searching"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.5"
+        android:layout_weight="1"
         android:text="Stop serching"
         android:textSize="20sp" />
 

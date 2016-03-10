@@ -76,12 +76,19 @@ public class MainActivity extends AppCompatActivity {
             alertDialogBuilder
                     .setMessage("Welcome in our restaurant. Read the daily menu to find out what " +
                             "fantastic dishes you can taste here. Thank you for downloading the app, " +
-                            "at the time of payment notify the promotional code PervasiveSystems to " +
+                            "at the time of payment notify the promotional code -PervasiveSystems- to " +
                             "get a discount of 10%.")
                     .setCancelable(false)
                     .setPositiveButton("Go", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             updateUI();
+                        }
+                    })
+
+                    .setNegativeButton("I don't care", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
                         }
                     });
 

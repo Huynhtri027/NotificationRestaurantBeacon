@@ -54,7 +54,7 @@ public class MyApplication extends Application {
                 new Intent[]{notifyIntent}, PendingIntent.FLAG_CANCEL_CURRENT);
 
         Notification notification = new Notification.Builder(this)
-                .setSmallIcon(android.R.drawable.ic_dialog_info)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setAutoCancel(true)
