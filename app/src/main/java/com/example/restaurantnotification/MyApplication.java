@@ -54,7 +54,7 @@ public class MyApplication extends Application {
                 new Intent[]{notifyIntent}, PendingIntent.FLAG_CANCEL_CURRENT);
 
         Notification notification = new Notification.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.ic_restaurant_menu)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setAutoCancel(true)

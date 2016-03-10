@@ -1,39 +1,28 @@
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
-    android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
+    android:background="@drawable/backgroundmain">
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/white">
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:text="Searching..."
+        android:textColor="@color/red_material"
+        android:textSize="50sp"
+        android:gravity="center" />
 
-        <android.support.design.widget.AppBarLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:theme="@style/AppTheme.AppBarOverlay">
+    <!-- Research started in background. You can continue to do other things, or you can simply lock the screen. -->
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/restaurant_menu_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+    <!--
+    <Button
+        android:id="@+id/button_stop_searching"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Stop serching"
+        android:textSize="20sp" />
+    -->
 
-        </android.support.design.widget.AppBarLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/restaurant_menu_recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="vertical" />
-
-    </LinearLayout>
-
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>
