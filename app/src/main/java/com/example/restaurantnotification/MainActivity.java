@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.estimote.sdk.BeaconManager;
 import com.estimote.sdk.SystemRequirementsChecker;
 
 import java.util.LinkedList;
@@ -30,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private MenuAdapter cAdapter;
     private List<Item> productsList ;
 
-    private BeaconManager b;
-    //private Button stopSearchingButton;
+    //Variable to see if we have entered "onResume" by clicking on the notification or because we only re-opened the application
+    private boolean seen=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,29 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mToolbar = (Toolbar) findViewById(R.id.restaurant_menu_toolbar);
-
-        /*
-        stopSearchingButton = (Button) findViewById(R.id.button_stop_searching);
-        stopSearchingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                b = new BeaconManager(getApplicationContext());
-
-                b.connect(new BeaconManager.ServiceReadyCallback() {
-                    @Override
-                    public void onServiceReady() {
-                        b.stopMonitoring(new Region("monitored region",
-                                UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"), 17957, 56571));
-                    }
-                });
-
-                Toast.makeText(MainActivity.this, "Research was stopped", Toast.LENGTH_SHORT).show();
-            }
-        });
-        */
     }
-
-    private boolean seen=false;
 
     @Override
     protected void onResume() {
@@ -109,6 +86,10 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        /* With the following line we go through a predefined checklist and makes sure that everything
+        is accounted for, including the runtime permissions (and also things like, is Bluetooth on,
+        is Location on, etc.)
+         */
         SystemRequirementsChecker.checkWithDefaultDialogs(this);
 
     }
@@ -127,19 +108,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -148,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //Metodi ausiliari -----------------------------------------------------------------------------
+    // Other methods -------------------------------------------------------------------------------
 
     private void updateUI(){
         Log.i(TAG, "updateUI");
@@ -159,27 +136,26 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Dishes of the day");
 
         recyclerView = (RecyclerView) findViewById(R.id.restaurant_menu_recyclerview);
-
-        //aggiunta divisore a recycler view
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
-        //recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         productsList = new LinkedList<Item>();
 
-        productsList.add(new Item(R.drawable.antipasto,"Antipasto","8 €"));
-        productsList.add(new Item(R.drawable.fritti,"Fritti","6 €"));
+        /*Obviously at this point, you can replace the following lines with an AsyncTask that
+        recovers from the cloud the daily menu. */
+        productsList.add(new Item(R.drawable.antipasto,"Italian appetizer","8 €"));
+        productsList.add(new Item(R.drawable.fritti,"Fry","6 €"));
         productsList.add(new Item(R.drawable.pasta,"Pasta","6 €"));
         productsList.add(new Item(R.drawable.lasagna,"Lasagna","7 €"));
         productsList.add(new Item(R.drawable.pizza,"Pizza","7 €"));
-        productsList.add(new Item(R.drawable.panino,"Panino","7 €"));
-        productsList.add(new Item(R.drawable.bistecca,"Bistecca","18 €"));
-        productsList.add(new Item(R.drawable.pesce,"Pesce","15 €"));
-        productsList.add(new Item(R.drawable.verdure,"Verdure","8 €"));
-        productsList.add(new Item(R.drawable.insalata,"Insalata","5 €"));
-        productsList.add(new Item(R.drawable.gelato,"Gelato","5 €"));
+        productsList.add(new Item(R.drawable.panino,"Sandwich","7 €"));
+        productsList.add(new Item(R.drawable.bistecca,"Beefsteak","18 €"));
+        productsList.add(new Item(R.drawable.pesce,"Fish","15 €"));
+        productsList.add(new Item(R.drawable.verdure,"Vegetables","8 €"));
+        productsList.add(new Item(R.drawable.insalata,"Salad","5 €"));
+        productsList.add(new Item(R.drawable.gelato,"Ice cream","5 €"));
         productsList.add(new Item(R.drawable.tiramisu,"Tiramisu","5 €"));
 
         cAdapter = new MenuAdapter(productsList,MainActivity.this);

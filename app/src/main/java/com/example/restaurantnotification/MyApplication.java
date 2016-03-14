@@ -22,17 +22,54 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        /*ADD A BEACON MANAGER ---------------------------------------------------------------------
+
+        To enable beacon monitoring, let’s first create ourselves an instance of BeaconManager
+        (the gateway to interactions with Estimote Beacons).
+
+        We expect the monitoring in our app to work at all times, no matter which activity is
+        currently in use. To achieve that, we’ll instantiate and store our BeaconManager object
+        in a subclass of the Application class.
+
+        [NB] Android documentation says this about the Application: Base class for those who need to
+        maintain global application state. This is exactly what we need!
+        */
         beaconManager = new BeaconManager(getApplicationContext());
+
+
+        /*START MONITORING -------------------------------------------------------------------------
+
+        Next step, let’s create a beacon region defining our monitoring geofence, and use it to start
+        monitoring. For the purposes of this tutorial, we’ll stick to a single beacon, but it’s just
+        as easy to target entire groups of beacons by setting the major and/or minor to null.
+         */
         beaconManager.setMonitoringListener(new BeaconManager.MonitoringListener() {
+            /*
+            Keep in mind: When monitoring a region that spans multiple beacons, there will be a single
+            “enter” event when the first matching beacon is detected; and a single “exit” event when none
+            of the matching beacons can be detected anymore. There’s no way to keep track of “interim”
+            beacons’ “enters” and “exits”—other than creating a single region per each beacon of course.
+             */
+
             @Override
             public void onEnteredRegion(Region region, List<Beacon> list) {
                 showNotification("Restaurant AL VIALETTO", "Click for the dishes of the day");
             }
             @Override
             public void onExitedRegion(Region region) {
-                // could add an "exit" notification too if you want (-:
+                /* Once the beacon is out of range, it still takes about 30 seconds to truly recognize
+                that fact. This built-in, non-adjustable delay is there to prevent false “exit”
+                events, e.g., when a crowd temporarily obstructs the beacon and it stops being
+                detectable for a few seconds.
+                */
             }
         });
+
+
+        /*
+        Use startMonitoring and stopMonitoring to control monitoring. Events are delivered to
+        onEnteredRegion and onExitedRegion methods of the MonitoringListener (defined before).
+         */
         beaconManager.connect(new BeaconManager.ServiceReadyCallback() {
             @Override
             public void onServiceReady() {
@@ -43,7 +80,7 @@ public class MyApplication extends Application {
     }
 
 
-    // Metodi ausiliari --------------------------------------------------------
+    // SHOW A NOTIFICATION ------------------------------------------------------------------------
 
     public void showNotification(String title, String message) {
         Intent notifyIntent = new Intent(this, MainActivity.class);
