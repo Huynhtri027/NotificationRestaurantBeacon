@@ -115,12 +115,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -141,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        productsList = new LinkedList<Item>();
+        productsList = new LinkedList<>();
 
         /*Obviously at this point, you can replace the following lines with an AsyncTask that
         recovers from the cloud the daily menu. */

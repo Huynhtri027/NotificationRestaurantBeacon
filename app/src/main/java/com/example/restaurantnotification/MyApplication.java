@@ -44,6 +44,7 @@ public class MyApplication extends Application {
         as easy to target entire groups of beacons by setting the major and/or minor to null.
          */
         beaconManager.setMonitoringListener(new BeaconManager.MonitoringListener() {
+
             /*
             Keep in mind: When monitoring a region that spans multiple beacons, there will be a single
             “enter” event when the first matching beacon is detected; and a single “exit” event when none
@@ -102,4 +103,6 @@ public class MyApplication extends Application {
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(1, notification);
     }
+
+
 }
