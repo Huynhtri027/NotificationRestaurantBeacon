@@ -11,3 +11,8 @@ I have made a simple Android application to show the use of Estimote beacons.
 -Used technologies: Estimote SDK for Android
 
 -Tested on: Nexus 5 with Android 6.0.1
+
+
+Linkedin: https://it.linkedin.com/in/davide-piccardi-8b3950105
+
+Pervasive Systems course: http://ichatz.me/index.php/Site/PervasiveSystems2016
