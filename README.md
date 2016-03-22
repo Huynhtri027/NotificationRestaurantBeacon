@@ -13,8 +13,11 @@ I have made a simple Android application to show the use of Estimote beacons.
 -Tested on: Nexus 5 with Android 6.0.1
 
 
+References:
+
 Linkedin: https://it.linkedin.com/in/davide-piccardi-8b3950105
 
 Email: davidepic91@hotmail.it
 
-Reference to Pervasive Systems course (Sapienza University of Rome): http://ichatz.me/index.php/Site/PervasiveSystems2016
+Pervasive Systems course (Sapienza University of Rome): 
+http://ichatz.me/index.php/Site/PervasiveSystems2016
