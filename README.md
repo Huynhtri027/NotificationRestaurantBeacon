@@ -17,4 +17,4 @@ Linkedin: https://it.linkedin.com/in/davide-piccardi-8b3950105
 
 Email: davidepic91@hotmail.it
 
-Pervasive Systems course: http://ichatz.me/index.php/Site/PervasiveSystems2016
+Reference to Pervasive Systems course (Sapienza University of Rome): http://ichatz.me/index.php/Site/PervasiveSystems2016
