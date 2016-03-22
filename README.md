@@ -15,4 +15,6 @@ I have made a simple Android application to show the use of Estimote beacons.
 
 Linkedin: https://it.linkedin.com/in/davide-piccardi-8b3950105
 
+Email: davidepic91@hotmail.it
+
 Pervasive Systems course: http://ichatz.me/index.php/Site/PervasiveSystems2016
